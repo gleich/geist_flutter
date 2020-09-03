@@ -5,3 +5,7 @@ files:
     source: https://github.com/banurapp/banur/blob/master/LICENSE
   - path: .github/workflows/fsync.yml
     source: https://github.com/banurapp/banur/blob/master/standard-docs/workflows/fsync.yml
+  - path: CONTRIBUTING.md
+    source: https://github.com/banurapp/banur/blob/master/standard-docs/docs/CONTRIBUTING.md
+  - path: CODE_OF_CONDUCT.md
+    source: https://github.com/banurapp/banur/blob/master/CODE_OF_CONDUCT.md
