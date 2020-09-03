@@ -1,0 +1,5 @@
+files:
+  - path: CLA
+    source: https://github.com/banurapp/web/blob/master/CLA
+  - path: LICENSE
+    source: https://github.com/banurapp/web/blob/master/LICENSE
