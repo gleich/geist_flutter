@@ -3,3 +3,5 @@ files:
     source: https://github.com/banurapp/banur/blob/master/CLA
   - path: LICENSE
     source: https://github.com/banurapp/banur/blob/master/LICENSE
+  - path: .github/workflows/fsync.yml
+    source: https://github.com/banurapp/banur/blob/master/standard-docs/workflows/fsync.yml
