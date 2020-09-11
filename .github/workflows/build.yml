@@ -13,4 +13,4 @@ jobs:
           channel: 'beta'
       - run: cd example
       - run: flutter pub get
-      - run: flutter build appbundle --target-platform android-arm,android-arm64,android-x64
+      - run: flutter build apk
