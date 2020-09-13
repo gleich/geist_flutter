@@ -2,6 +2,8 @@ library geist_flutter;
 
 import 'package:flutter/material.dart';
 
+import 'shared.dart';
+
 class Dark {
   ThemeData get theme => ThemeData(
         brightness: _Other.brightness,
@@ -30,7 +32,7 @@ class Dark {
 
 class _Colors {
   static const scaffoldBackground = Colors.black;
-  static const error = Color.fromRGBO(197, 0, 0, 1);
+  static const error = SharedColors.error;
   static const foreground = Colors.white;
   static const primary = Colors.black;
   static const secondary = Color.fromRGBO(17, 17, 17, 1);
