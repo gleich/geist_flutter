@@ -2,26 +2,45 @@ import 'package:flutter/material.dart';
 import 'package:geist_flutter/light.dart';
 import 'package:geist_flutter/dark.dart';
 
+import 'package:geist_flutter/geist_flutter.dart';
+
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   // This widget is the root of your application.
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  ThemeMode theme = ThemeMode.dark;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: Light().theme,
       darkTheme: Dark().theme,
-      themeMode: ThemeMode.dark,
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      themeMode: theme,
+      home: MyHomePage(
+        title: 'Flutter Demo Home Page',
+        theme: theme,
+        toggleTheme: () {
+          setState(() {
+            theme =
+                (theme == ThemeMode.dark ? ThemeMode.light : ThemeMode.dark);
+          });
+        },
+      ),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key key, this.title, this.theme, this.toggleTheme})
+      : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -33,6 +52,8 @@ class MyHomePage extends StatefulWidget {
   // always marked "final".
 
   final String title;
+  final ThemeMode theme;
+  final Function toggleTheme;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -64,7 +85,11 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: Text(widget.title,
+            style: TextStyle(
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? Colors.white
+                    : Colors.black)),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -93,13 +118,41 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
+            Button(
+              text: Text("Primary"),
+              onPressed: () {},
+            ),
+            Button(
+              text: Text("Secondary"),
+              theme: GeistButtonTheme.secondary,
+              onPressed: () {},
+            ),
+            Button(
+              text: Text("Success"),
+              theme: GeistButtonTheme.success,
+              onPressed: () {},
+            ),
+            Button(
+              text: Text("Error"),
+              theme: GeistButtonTheme.error,
+              onPressed: () {},
+            ),
+            Button(
+              text: Text("Warning"),
+              theme: GeistButtonTheme.warning,
+              onPressed: () {},
+            ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: () {
+          widget.toggleTheme();
+        },
         tooltip: 'Increment',
-        child: Icon(Icons.add),
+        child: Icon(widget.theme == ThemeMode.light
+            ? Icons.brightness_high
+            : Icons.brightness_3),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
