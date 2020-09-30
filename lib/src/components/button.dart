@@ -1,5 +1,6 @@
-import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+
 import 'package:geist_flutter/shared.dart';
 
 class Button extends StatelessWidget {
