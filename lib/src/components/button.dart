@@ -5,7 +5,7 @@ import 'package:geist_flutter/shared.dart';
 
 class Button extends StatelessWidget {
   final Widget text;
-  final GeistButtonTheme theme;
+  final GeistTheme<GeistButtonTheme> theme;
   final Function() onPressed;
 
   Button({this.text, this.onPressed, this.theme = GeistButtonTheme.normal});
@@ -38,56 +38,47 @@ class Button extends StatelessWidget {
 }
 
 class GeistButtonTheme {
-  final ButtonThemeColors darkTheme;
-  final ButtonThemeColors lightTheme;
-
-  const GeistButtonTheme({this.darkTheme, this.lightTheme})
-      : assert(darkTheme != null || lightTheme != null);
-
-  // must be var due to how the constructor works
-  static const normal = GeistButtonTheme(
-    lightTheme: ButtonThemeColors(
-      foregroundColor: Colors.black,
-      borderColor: Colors.black,
-    ),
-    darkTheme: ButtonThemeColors(
-      borderColor: Colors.white,
-    ),
-  );
-  static const secondary = GeistButtonTheme(
-    lightTheme: ButtonThemeColors(
-      backgroundColor: Colors.black,
-    ),
-    darkTheme: ButtonThemeColors(
-      backgroundColor: Colors.white,
-      foregroundColor: Colors.black,
-    ),
-  );
-  static const error = GeistButtonTheme(
-    lightTheme: ButtonThemeColors(
-      backgroundColor: SharedColors.error,
-    ),
-  );
-  static const success = GeistButtonTheme(
-    lightTheme: ButtonThemeColors(
-      backgroundColor: SharedColors.success,
-    ),
-  );
-  static const warning = GeistButtonTheme(
-    lightTheme: ButtonThemeColors(
-      backgroundColor: SharedColors.warning,
-    ),
-  );
-}
-
-class ButtonThemeColors {
   final Color backgroundColor;
   final Color foregroundColor;
   final Color borderColor;
 
-  const ButtonThemeColors({
+  const GeistButtonTheme({
     this.backgroundColor = Colors.transparent,
     this.foregroundColor = Colors.white,
     this.borderColor = Colors.transparent,
   });
+
+  static const normal = GeistTheme<GeistButtonTheme>(
+    lightTheme: GeistButtonTheme(
+      foregroundColor: Colors.black,
+      borderColor: Colors.black,
+    ),
+    darkTheme: GeistButtonTheme(
+      borderColor: Colors.white,
+    ),
+  );
+  static const secondary = GeistTheme<GeistButtonTheme>(
+    lightTheme: GeistButtonTheme(
+      backgroundColor: Colors.black,
+    ),
+    darkTheme: GeistButtonTheme(
+      backgroundColor: Colors.white,
+      foregroundColor: Colors.black,
+    ),
+  );
+  static const error = GeistTheme<GeistButtonTheme>(
+    lightTheme: GeistButtonTheme(
+      backgroundColor: SharedColors.error,
+    ),
+  );
+  static const success = GeistTheme<GeistButtonTheme>(
+    lightTheme: GeistButtonTheme(
+      backgroundColor: SharedColors.success,
+    ),
+  );
+  static const warning = GeistTheme<GeistButtonTheme>(
+    lightTheme: GeistButtonTheme(
+      backgroundColor: SharedColors.warning,
+    ),
+  );
 }
